@@ -1,5 +1,6 @@
 package com.example.Jobdone.Job;
 
+import com.example.Jobdone.company.Company;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +25,7 @@ public class JobController {
     @PostMapping
     public ResponseEntity<String> jobCreated(@RequestBody Job job) {
         jobService.create(job);
+//        Company company = job.getCompany();
         return new ResponseEntity<>("Job created successfully", HttpStatus.CREATED);
     }
 
@@ -45,7 +47,7 @@ public class JobController {
         return new ResponseEntity<>("Job not found", HttpStatus.NOT_FOUND);
     }
 
-        @PutMapping("/{id}")
+    @PutMapping("/{id}")
 //    @RequestMapping(value = "/jobs/{id}", method = RequestMethod.PUT)
     public ResponseEntity<String> updateJob(@PathVariable long id, @RequestBody Job updatedJob) {
         boolean updated = jobService.updatedJob(id, updatedJob);

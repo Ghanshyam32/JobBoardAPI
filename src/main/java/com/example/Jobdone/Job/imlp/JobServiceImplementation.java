@@ -1,4 +1,4 @@
-package com.example.Jobdone.imlp;
+package com.example.Jobdone.Job.imlp;
 
 import com.example.Jobdone.Job.Job;
 import com.example.Jobdone.Job.JobRepository;
@@ -64,6 +64,7 @@ public class JobServiceImplementation implements JobService {
             job.setMinSalary(updatedJob.getMinSalary());
             job.setMaxSalary(updatedJob.getMaxSalary());
             job.setLocation(updatedJob.getLocation());
+            jobRepository.save(job);
             return true;
         }
 
