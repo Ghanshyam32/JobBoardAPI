@@ -12,10 +12,10 @@ public interface CompanyService {
 
     void create(Company company);
 
-//    Company getCompanyById(long id);
+    //    Company getCompanyById(long id);
 //
-//    boolean deleteCompanyById(long id);
-//
-//    boolean updatedCompany(long id, Company updatedCompany);
+    boolean deleteCompanyById(long id);
+
+    Company getCompanyById(Long id);
 
 }

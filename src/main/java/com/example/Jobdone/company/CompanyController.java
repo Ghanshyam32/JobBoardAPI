@@ -1,5 +1,6 @@
 package com.example.Jobdone.company;
 
+import com.example.Jobdone.Job.Job;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -31,5 +32,23 @@ public class CompanyController {
     public ResponseEntity<String> addCompany(@RequestBody Company company) {
         companyService.create(company);
         return new ResponseEntity<>("Company added successfully", HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteJob(@PathVariable long id) {
+        boolean deleted = companyService.deleteCompanyById(id);
+        if (deleted) {
+            return new ResponseEntity<>("Job Deleted Successfully", HttpStatus.GONE);
+        }
+        return new ResponseEntity<>("Job is not found", HttpStatus.NOT_FOUND);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Company> getCompany(@PathVariable long id) {
+        Company company = companyService.getCompanyById(id);
+        if (company != null) {
+            return new ResponseEntity<>(company, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 }
