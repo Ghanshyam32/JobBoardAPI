@@ -38,9 +38,9 @@ public class CompanyController {
     public ResponseEntity<String> deleteJob(@PathVariable long id) {
         boolean deleted = companyService.deleteCompanyById(id);
         if (deleted) {
-            return new ResponseEntity<>("Job Deleted Successfully", HttpStatus.GONE);
+            return new ResponseEntity<>("Company Deleted Successfully", HttpStatus.GONE);
         }
-        return new ResponseEntity<>("Job is not found", HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>("Company not found", HttpStatus.NOT_FOUND);
     }
 
     @GetMapping("/{id}")

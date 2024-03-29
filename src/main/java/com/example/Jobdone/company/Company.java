@@ -1,9 +1,11 @@
 package com.example.Jobdone.company;
 
 import com.example.Jobdone.Job.Job;
+import com.example.Jobdone.Review.Review;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -18,7 +20,19 @@ public class Company {
     @OneToMany(mappedBy = "company")
     private List<Job> jobs;
 
+    @OneToMany(mappedBy = "company")
+    private List<Review> reviews;
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
+    }
+
     public Company() {
+        this.reviews = new ArrayList<>();
     }
 
     public Long getId() {
